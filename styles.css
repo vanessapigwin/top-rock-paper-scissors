@@ -53,8 +53,15 @@ img {
 .hp {
     background-color: #C73E1D;
     height: 20px;
-    width: 320px;
+    width: 400px;
     border-radius: 12px;
+}
+
+.hp-damaged {
+    background-color: #C73E1D;
+    height: 20px;
+    width: 320px;
+    border-radius: 12px 0 0 12px;
 }
 
 .hp-bar {

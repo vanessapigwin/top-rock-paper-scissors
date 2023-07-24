@@ -1,71 +1,50 @@
-const MOVES = ['Rock', 'Paper', 'Scissors'];
+// const MOVES = ['Rock', 'Paper', 'Scissors'];
+// const rock = document.querySelector('.rock');
+// const paper = document.querySelector('.paper');
+// const scissors = document.querySelector('.scissors');
+
+// let playerSelection;
+// let playerScore = 0;
+// let computerScore = 0;
 
 function getComputerChoice () {
     let random_number = Math.floor(Math.random()*3)
-    return choices[random_number];
-}
-
-function getPlayerChoice () {
-    let isValidChoice = false;
-    let choice;
-    
-    // ask until player actually inputs either rock paper or scissors
-    while (!isValidChoice) {
-        choice = prompt('Choose : rock, paper or scissors');
-        choice = choice.toLowerCase();
-        choice = choice.charAt(0).toUpperCase() + choice.slice(1);
-
-        if (MOVES.includes(choice)) {
-            isValidChoice = true;
-        }
-    }
-    return choice;
+    return MOVES[random_number];
 }
 
 function playRound(playerSelection, computerSelection) {
-    let result;
+    let winner;
     
     if (playerSelection === computerSelection) {
-        result = `It's a tie! Both chose ${playerSelection}.`
+        winner = 'Tie';
     } else if (playerSelection === 'rock') {
-        result = (computerSelection === 'scissors') ?
-            `You win! ${playerSelection} beats ${computerSelection}`:
-            `You lose! ${computerSelection} beats ${playerSelection}`;
+        winner = (computerSelection === 'scissors') ? 'player':'computer';
     } else if (playerSelection === 'paper') {
-        result = (computerSelection === 'rock') ?
-            `You win! ${playerSelection} beats ${computerSelection}`:
-            `You lose! ${computerSelection} beats ${playerSelection}`;
+        winner = (computerSelection === 'rock') ? 'player':'computer';
     } else {
-        result = (computerSelection === 'paper') ?
-            `You win! ${playerSelection} beats ${computerSelection}`:
-            `You lose! ${computerSelection} beats ${playerSelection}`; 
+        winner = (computerSelection === 'paper') ? 'player':'computer';
     }
-    
-    return result;
+    return winner;
 }
 
-function game() {
-    let currentRound = 0;
-    const maxRounds = 5;
-    let keepPlaying = true;
+function createUI() {
+    const mainContainer = document.querySelector('.main-container');
+    const computerStats = document.createElement('div');
+    const outcome = document.createElement('div');
+    const playerStats = document.createElement('div');
 
-    while (keepPlaying) {
-        currentRound += 1;
-        console.log(`Round ${currentRound}, fight!`);
+}
 
-        // selection and battle via console
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        console.log('You chose: ',playerSelection);
-        console.log('Computer chose: ', computerSelection);
-        console.log(playRound(playerSelection, computerSelection));
+// rock.addEventListener('click', () => {
+//     const computerSelection = getComputerChoice();
+//     playerSelection = rock.dataset.choice;
+//     let winner = playRound(playerSelection, computerSelection);
+//     console.log(winner, playerSelection, playerScore, computerSelection, computerScore);
+// })
 
-        if (currentRound === maxRounds) {
-            keepPlaying = false;
-            console.log('Thanks for playing!')
-        }
-    }
+function startGame() {
+    const startScreen = document.querySelector('.start-screen');
+    startScreen.style.display = 'none';
 }
 
 
-game();

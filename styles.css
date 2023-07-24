@@ -1,0 +1,83 @@
+/* 
+WHITE =  #F5F5F5
+GRAY = 525252
+BLACK = 262626
+LIGHT PRIMARY = CCE7D7
+PRIMARY = 82C49D
+ACCENT = #C73E1D
+*/
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+}
+
+.main-container {
+    background-color: #F5F5F5;
+    color: #262626;
+    display: flex;
+    width:900px;
+    height:900px;
+    flex-direction: column;
+    align-items: center;
+    padding:40px 0;
+}
+
+.button-container {
+    background-color: #CCE7D7;
+    width: 90%;
+    height: 20%; 
+    border: solid 6px #82C49D;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button-container > a {
+    background-color: #CCE7D7;
+    border: none;
+    font-size: 32px;
+    text-align: center;
+}
+
+.button-container > a:hover {
+    font-weight: bold;
+}
+
+img {
+    width: 300px;
+    height: auto;
+}
+
+.hp {
+    background-color: #C73E1D;
+    height: 20px;
+    width: 320px;
+    border-radius: 12px;
+}
+
+.hp-bar {
+    width: 400px;
+    height:20px;
+    background-color: #CCCCCC;
+    border: solid 2px #262626;
+    border-radius: 12px;
+}
+
+.stats-outcome {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: auto;
+    font-size: 20px;
+}
+
+.stats-outcome.computer-stats {
+    margin-bottom: auto;
+}
+
+.start-game  {
+    display: none;
+}
+

@@ -4,9 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors!</title>
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="./index.js" defer></script>
 </head>
 <body>
+<div class="main-container">
+    <div class="stats-outcome computer-stats">
+        <div class="computer-stats">
+            <div class="hp-bar">
+                <div class="hp"></div>
+            </div>
+            <p>HP: 4 / 5</p>
+            <div>Computer chose Rock, it's super effective!</div>
+        </div>
+        <img src="./images/computer.png">
+    </div>
     
+    <div class="stats-outcome player-stats">
+        <img src="./images/dragon.png">
+        <div class="player-stats">
+            <div class="hp-bar">
+                <div class="hp"></div>
+            </div>
+            <p>HP: 4 / 5</p>
+            <div>You chose Scissors, the attack missed.</div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a class="rock" data-choice="Rock">Rock</a>
+        <a class="paper" data-choice="Paper">Paper</a>
+        <a class="scissors" data-choice="Scissors">Scissors</a>
+    </div>
+    <!-- <div class="start-screen">
+        <a onclick="startGame()">start game</a>
+    </div>
+    <div class="game-over-screen"></div> -->
+</div>
 </body>
 </html>

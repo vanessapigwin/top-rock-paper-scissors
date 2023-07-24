@@ -2,7 +2,6 @@ function createUI() {
     let mainContainer = document.querySelector('.main-container');
     let computerDiv = document.createElement('div');
     let playerDiv = document.createElement('div');
-    let choiceDiv = document.createElement('div');
 
     // computer
     let computerStatsDiv = document.createElement('div');

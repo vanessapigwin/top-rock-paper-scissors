@@ -2,7 +2,7 @@ const MOVES = ['Rock', 'Paper', 'Scissors'];
 let playerHp = 5;
 let computerHp = 5;
 
-function resetScore (playerHp, computerHp) {
+function resetScore () {
     playerHp = 5;
     computerHp = 5;
 }
@@ -12,11 +12,8 @@ function getComputerChoice () {
     return MOVES[random_number];
 }
 
-function playRound() {
+function findWinner (playerSelection, computerSelection) {
     let winner;
-    const computerSelection = getComputerChoice();
-    const playerSelection = this.getAttribute('data-choice');
-    
     if (playerSelection === computerSelection) {
         winner = 'Tie';
     } else if (playerSelection === 'Rock') {
@@ -26,11 +23,19 @@ function playRound() {
     } else {
         winner = (computerSelection === 'Paper') ? 'player':'computer';
     }
+    return winner
+}
+
+function playRound() {
+    let winner;
+    const computerSelection = getComputerChoice();
+    const playerSelection = this.getAttribute('data-choice');
+    
+    winner = findWinner(playerSelection, computerSelection);
     updateScore(winner);
-    console.log(winner, playerHp, playerSelection, computerHp, computerSelection);
 
     if (playerHp === 0 || computerHp === 0) {
-        console.log('game ends')
+        endGame();
     }
 }
 
@@ -42,10 +47,18 @@ function updateScore (winner) {
     } else return;
 }
 
+function endGame() {
+    let mainDiv = document.querySelector('.main-container');
+    for (child of mainDiv.children) {
+        child.style.display = 'none';
+    }
+}
+
 function startGame() {
     const startScreen = document.querySelector('.start-screen');
     startScreen.style.display = 'none';
 
+    resetScore();
     createUI();
 
     const rock = document.querySelector('.rock');

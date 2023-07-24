@@ -92,6 +92,36 @@ img {
     margin-bottom: auto;
 }
 
+h1 {
+    font-size: 40px;
+    padding: 40px;
+    color: #262626;
+}
+
+.start-screen {
+    flex: 1;
+    margin-top: 30%;
+    align-items: center;
+    text-align: center;
+}
+
+.start-screen > a {
+    /* background-color: #F5F5F5; */
+    font-size: 32px;
+    padding: 20px;
+    /* border: solid 6px #82C49D;
+    border-radius: 21px; */
+    color: #82C49D;
+    font-weight: bold;
+}
+
+.start-screen > a:hover {
+    background-color: #82C49D;
+    border: solid 6px #82C49D;
+    border-radius: 21px;
+    color: #F5F5F5;
+}
+
 .start-game  {
     display: none;
 }

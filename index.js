@@ -28,11 +28,38 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function createUI() {
-    const mainContainer = document.querySelector('.main-container');
-    const computerStats = document.createElement('div');
-    const outcome = document.createElement('div');
-    const playerStats = document.createElement('div');
+    let mainContainer = document.querySelector('.main-container');
+    let computerDiv = document.createElement('div');
+    let playerDiv = document.createElement('div');
+    let choiceDiv = document.createElement('div');
 
+    // computer
+    let computerStatsDiv = document.createElement('div');
+    let hpBarDiv = document.createElement('div');
+    let hpDiv = document.createElement('div');
+    let computerP = document.createElement('p');
+    let computerOutcomeDiv = document.createElement('div');
+    let computerImg = document.createElement('img');
+
+    computerP.textContent = 'HP: 5 / 5';
+    computerOutcomeDiv.textContent = 'I\'ll only need one core for you!';
+    computerImg.src = 'images/computer.png';
+
+    hpBarDiv.appendChild(hpDiv);
+    computerStatsDiv.appendChild(hpBarDiv);
+    computerStatsDiv.appendChild(computerP);
+    computerStatsDiv.appendChild(computerOutcomeDiv);
+    computerDiv.appendChild(computerStatsDiv);
+    computerDiv.appendChild(computerImg);
+    mainContainer.appendChild(computerDiv);
+    
+    mainContainer.classList.add('main-container');
+    computerDiv.classList.add('stats-outcome', 'computer-stats');
+    computerStatsDiv.classList.add('computer-stats');
+    hpBarDiv.classList.add('hp-bar');
+    hpDiv.classList.add('hp');
+
+    // player
 }
 
 // rock.addEventListener('click', () => {
@@ -45,6 +72,8 @@ function createUI() {
 function startGame() {
     const startScreen = document.querySelector('.start-screen');
     startScreen.style.display = 'none';
+
+    createUI();
 }
 
 

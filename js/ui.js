@@ -1,5 +1,5 @@
 function createUI() {
-    let mainContainer = document.querySelector('.main-container');
+    let gameContainer = document.createElement('div');
     let computerDiv = document.createElement('div');
     let playerDiv = document.createElement('div');
 
@@ -21,9 +21,9 @@ function createUI() {
     computerStatsDiv.appendChild(computerOutcomeDiv);
     computerDiv.appendChild(computerStatsDiv);
     computerDiv.appendChild(computerImg);
-    mainContainer.appendChild(computerDiv);
+    gameContainer.appendChild(computerDiv);
     
-    mainContainer.classList.add('main-container');
+    gameContainer.classList.add('main-container', 'game-container');
     computerDiv.classList.add('stats-outcome', 'computer-stats');
     computerStatsDiv.classList.add('computer-stats');
     computerHpBarDiv.classList.add('hp-bar');
@@ -47,7 +47,7 @@ function createUI() {
     playerStatsDiv.appendChild(playerOutcomeDiv);
     playerDiv.appendChild(playerImg);
     playerDiv.appendChild(playerStatsDiv);
-    mainContainer.appendChild(playerDiv);
+    gameContainer.appendChild(playerDiv);
 
     playerDiv.classList.add('stats-outcome', 'player-stats');
     playerStatsDiv.classList.add('player-stats');
@@ -79,7 +79,7 @@ function createUI() {
     buttonContainer.appendChild(rockDiv);
     buttonContainer.appendChild(paperDiv);
     buttonContainer.appendChild(scissorsDiv);
-    mainContainer.appendChild(buttonContainer);
+    gameContainer.appendChild(buttonContainer);
 
     rockArrow.classList.add('arrow');
     paperArrow.classList.add('arrow');
@@ -91,4 +91,8 @@ function createUI() {
     paperDiv.classList.add('move');
     scissorsDiv.classList.add('move');
     buttonContainer.classList.add('button-container')
+
+    // add game container
+    let mainContainer = document.querySelector('.main-container');
+    mainContainer.appendChild(gameContainer);
 }

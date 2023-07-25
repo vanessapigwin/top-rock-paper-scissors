@@ -1,6 +1,6 @@
 const MOVES = ['Rock', 'Paper', 'Scissors'];
-playerHp = 5;
-computerHp = 5;
+var playerHp = 5;
+var computerHp = 5;
 
 function resetScore () {
     playerHp = 5;
@@ -45,20 +45,19 @@ function updateScore (winner) {
     } else if (winner === 'computer') {
         playerHp -= 1;
     } else return;
+    console.log(winner, playerHp, computerHp)
 }
 
 function endGame() {
     let mainDiv = document.querySelector('.main-container');
-    for (child of mainDiv.children) {
-        child.style.display = 'none';
-    }
+    let gameContainer = document.querySelector('.game-container');
+    mainDiv.removeChild(gameContainer);
 
     const gameOverScreen = document.querySelector('.game-over-screen');
     gameOverScreen.style.display = 'block';
 }
 
 function startGame() {
-    console.log(playerHp, computerHp)
     let startScreen = document.querySelector('.start-screen');
     startScreen.style.display = 'none';
 

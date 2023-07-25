@@ -19,7 +19,7 @@ function findWinner (playerSelection, computerSelection) {
     } else if (playerSelection === 'Rock') {
         winner = (computerSelection === 'Scissors') ? 'player':'computer';
     } else if (playerSelection === 'Paper') {
-        winner = (computerSelection === 'Sock') ? 'player':'computer';
+        winner = (computerSelection === 'Rock') ? 'player':'computer';
     } else {
         winner = (computerSelection === 'Paper') ? 'player':'computer';
     }

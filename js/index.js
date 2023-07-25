@@ -1,6 +1,6 @@
 const MOVES = ['Rock', 'Paper', 'Scissors'];
-let playerHp = 5;
-let computerHp = 5;
+playerHp = 5;
+computerHp = 5;
 
 function resetScore () {
     playerHp = 5;
@@ -35,7 +35,7 @@ function playRound() {
     updateScore(winner);
 
     if (playerHp === 0 || computerHp === 0) {
-        endGame();
+        endGame(winner);
     }
 }
 
@@ -52,18 +52,25 @@ function endGame() {
     for (child of mainDiv.children) {
         child.style.display = 'none';
     }
+
+    const gameOverScreen = document.querySelector('.game-over-screen');
+    gameOverScreen.style.display = 'block';
 }
 
 function startGame() {
-    const startScreen = document.querySelector('.start-screen');
+    console.log(playerHp, computerHp)
+    let startScreen = document.querySelector('.start-screen');
     startScreen.style.display = 'none';
+
+    let gameOverScreen = document.querySelector('.game-over-screen');
+    gameOverScreen.style.display = 'none';
 
     resetScore();
     createUI();
 
-    const rock = document.querySelector('.rock');
-    const paper = document.querySelector('.paper');
-    const scissors = document.querySelector('.scissors');
+    let rock = document.querySelector('.rock');
+    let paper = document.querySelector('.paper');
+    let scissors = document.querySelector('.scissors');
 
     rock.addEventListener('click', playRound);
     paper.addEventListener('click', playRound);

@@ -135,3 +135,7 @@ h1 {
     text-align: center;
     display: none;
 }
+
+.outcome-text {
+    width: 400px;
+}

@@ -23,7 +23,7 @@ function findWinner (playerSelection, computerSelection) {
     } else {
         winner = (computerSelection === 'Paper') ? 'player':'computer';
     }
-    return winner
+    return winner;
 }
 
 function playRound() {
@@ -45,7 +45,6 @@ function updateScore (winner) {
     } else if (winner === 'computer') {
         playerHp -= 1;
     } else return;
-    console.log(winner, playerHp, computerHp)
 }
 
 function endGame() {

@@ -111,7 +111,6 @@ function updateUI(winner, playerHp, playerSelection, computerHp, computerSelecti
 
     const computerHpBarWidth = parseInt(getComputedStyle(computerHpBar).getPropertyValue('width').slice(0, -2));
     const playerHpBarWidth = parseInt(getComputedStyle(playerHpBar).getPropertyValue('width').slice(0, -2));
-    console.log(computerHpBarWidth, playerHpBarWidth)
 
     computerHpText.textContent = `HP: ${computerHp} / 5`;
     playerHpText.textContent = `HP: ${playerHp} / 5`;

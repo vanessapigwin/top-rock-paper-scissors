@@ -1,15 +1,15 @@
 function createUI() {
-    let gameContainer = document.createElement('div');
-    let computerDiv = document.createElement('div');
-    let playerDiv = document.createElement('div');
+    const gameContainer = document.createElement('div');
+    const computerDiv = document.createElement('div');
+    const playerDiv = document.createElement('div');
 
     // computer
-    let computerStatsDiv = document.createElement('div');
-    let computerHpBarDiv = document.createElement('div');
-    let computerHpDiv = document.createElement('div');
-    let computerP = document.createElement('p');
-    let computerOutcomeDiv = document.createElement('div');
-    let computerImg = document.createElement('img');
+    const computerStatsDiv = document.createElement('div');
+    const computerHpBarDiv = document.createElement('div');
+    const computerHpDiv = document.createElement('div');
+    const computerP = document.createElement('p');
+    const computerOutcomeDiv = document.createElement('div');
+    const computerImg = document.createElement('img');
 
     computerP.textContent = 'HP: 5 / 5';
     computerOutcomeDiv.textContent = 'I\'ll only need one core for you!';
@@ -28,14 +28,15 @@ function createUI() {
     computerStatsDiv.classList.add('computer-stats');
     computerHpBarDiv.classList.add('hp-bar');
     computerHpDiv.classList.add('hp');
+    computerOutcomeDiv.classList.add('outcome-text');
 
     // player
-    let playerImg = document.createElement('img');
-    let playerStatsDiv = document.createElement('div');
-    let playerHpBarDiv = document.createElement('div');
-    let playerHpDiv = document.createElement('div');
-    let playerP = document.createElement('p');
-    let playerOutcomeDiv = document.createElement('div');
+    const playerImg = document.createElement('img');
+    const playerStatsDiv = document.createElement('div');
+    const playerHpBarDiv = document.createElement('div');
+    const playerHpDiv = document.createElement('div');
+    const playerP = document.createElement('p');
+    const playerOutcomeDiv = document.createElement('div');
 
     playerP.textContent = 'HP: 5 / 5';
     playerOutcomeDiv.textContent = 'Computer wants to challenge you...';
@@ -53,18 +54,19 @@ function createUI() {
     playerStatsDiv.classList.add('player-stats');
     playerHpBarDiv.classList.add('hp-bar');
     playerHpDiv.classList.add('hp');
+    playerOutcomeDiv.classList.add('outcome-text');
 
     // selection
-    let buttonContainer = document.createElement('div');
-    let rockDiv = document.createElement('div');
-    let paperDiv = document.createElement('div');
-    let scissorsDiv = document.createElement('div');
-    let rockLink = document.createElement('a');
-    let paperLink = document.createElement('a');
-    let scissorsLink = document.createElement('a');
-    let rockArrow = document.createElement('span');
-    let paperArrow = document.createElement('span');
-    let scissorsArrow = document.createElement('span');
+    const buttonContainer = document.createElement('div');
+    const rockDiv = document.createElement('div');
+    const paperDiv = document.createElement('div');
+    const scissorsDiv = document.createElement('div');
+    const rockLink = document.createElement('a');
+    const paperLink = document.createElement('a');
+    const scissorsLink = document.createElement('a');
+    const rockArrow = document.createElement('span');
+    const paperArrow = document.createElement('span');
+    const scissorsArrow = document.createElement('span');
 
     rockLink.innerHTML = '<span class="arrow">&#9656 </span>Rock';
     paperLink.innerHTML = '<span class="arrow">&#9656 </span>Paper';
@@ -93,6 +95,39 @@ function createUI() {
     buttonContainer.classList.add('button-container')
 
     // add game container
-    let mainContainer = document.querySelector('.main-container');
+    const mainContainer = document.querySelector('.main-container');
     mainContainer.appendChild(gameContainer);
+}
+
+function updateUI(winner, playerHp, playerSelection, computerHp, computerSelection) {
+    const computerHpText = document.querySelector('.computer-stats > p');
+    const computerMove = document.querySelector('.computer-stats > .outcome-text');
+    const computerHpBar = document.querySelector('.computer-stats > .hp-bar');
+    const computerCurrentHp = computerHpBar.firstElementChild;
+    const playerHpText = document.querySelector('.player-stats > p');
+    const playerMove = document.querySelector('.player-stats > .outcome-text');
+    const playerHpBar = document.querySelector('.player-stats > .hp-bar');
+    const playerCurrentHp = playerHpBar.firstElementChild;
+
+    const computerHpBarWidth = parseInt(getComputedStyle(computerHpBar).getPropertyValue('width').slice(0, -2));
+    const playerHpBarWidth = parseInt(getComputedStyle(playerHpBar).getPropertyValue('width').slice(0, -2));
+    console.log(computerHpBarWidth, playerHpBarWidth)
+
+    computerHpText.textContent = `HP: ${computerHp} / 5`;
+    playerHpText.textContent = `HP: ${playerHp} / 5`;
+
+    if (winner === 'player') {
+        playerMove.textContent = `You used ${playerSelection}, it was super effective!`;
+        computerMove.textContent = `Computer used ${computerSelection}, it missed...`;
+        computerCurrentHp.classList.add('hp-damaged');
+        computerCurrentHp.style.width = `${computerHp / 5 * computerHpBarWidth}px`;
+    } else if (winner === 'computer') {
+        computerMove.textContent = `Computer used ${computerSelection}, it was super effective!`;
+        playerMove.textContent = `You used ${playerSelection}, it missed...`;
+        playerCurrentHp.classList.add('hp-damaged');
+        playerCurrentHp.style.width = `${playerHp / 5 * playerHpBarWidth}px`;
+    } else {
+        computerMove.textContent = `Computer used ${computerSelection}, it wasn't effective.`;
+        playerMove.textContent = `You used ${playerSelection}, it wasn't effective.`;
+    }
 }

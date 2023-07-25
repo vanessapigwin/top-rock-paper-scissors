@@ -27,12 +27,12 @@ function findWinner (playerSelection, computerSelection) {
 }
 
 function playRound() {
-    let winner;
     const computerSelection = getComputerChoice();
     const playerSelection = this.getAttribute('data-choice');
-    
-    winner = findWinner(playerSelection, computerSelection);
+    let winner = findWinner(playerSelection, computerSelection);
+
     updateScore(winner);
+    updateUI(winner, playerHp, playerSelection, computerHp, computerSelection);
 
     if (playerHp === 0 || computerHp === 0) {
         endGame(winner);
@@ -51,17 +51,17 @@ function updateScore (winner) {
 function endGame() {
     let mainDiv = document.querySelector('.main-container');
     let gameContainer = document.querySelector('.game-container');
-    mainDiv.removeChild(gameContainer);
-
     const gameOverScreen = document.querySelector('.game-over-screen');
+
+    mainDiv.removeChild(gameContainer);
     gameOverScreen.style.display = 'block';
 }
 
 function startGame() {
     let startScreen = document.querySelector('.start-screen');
-    startScreen.style.display = 'none';
-
     let gameOverScreen = document.querySelector('.game-over-screen');
+
+    startScreen.style.display = 'none';   
     gameOverScreen.style.display = 'none';
 
     resetScore();

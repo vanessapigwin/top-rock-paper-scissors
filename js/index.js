@@ -47,13 +47,17 @@ function updateScore (winner) {
     } else return;
 }
 
-function endGame() {
+function endGame(winner) {
     let mainDiv = document.querySelector('.main-container');
     let gameContainer = document.querySelector('.game-container');
     const gameOverScreen = document.querySelector('.game-over-screen');
 
     mainDiv.removeChild(gameContainer);
     gameOverScreen.style.display = 'block';
+
+    winnerAnnounce = document.querySelector('.game-over-screen > h1');
+
+    winnerAnnounce.textContent = (winner==='player') ? "You won!" : "Computer wins!";
 }
 
 function startGame() {
